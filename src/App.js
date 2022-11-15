@@ -2,6 +2,7 @@ import styled, { createGlobalStyle } from "styled-components";
 import  FormularioCadastro  from "./components/FormularioCadastro/FormularioCadastro";
 import { Header } from "./components/Header";
 import TelaDaPostagem from "./components/TelaDaPostagem/TelaDaPostagem";
+import { useState } from "react";
 const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
@@ -17,6 +18,10 @@ const Container = styled.div`
 `;
 
 function App() {
+
+  const [imagem, setImagem]= useState("")
+  const [descricao, setDescricao]= useState("")
+  const [titulo, setTitulo] = useState("")
   
   return (
     <>
@@ -24,9 +29,12 @@ function App() {
       <Container>
         <aside>
           <Header />
-          <FormularioCadastro />
+          <FormularioCadastro 
+          titulo={titulo} setTitulo={setTitulo}
+          imagem={imagem} setImagem={setImagem} 
+          descricao={descricao} setDescricao={setDescricao} />
         </aside>
-        <TelaDaPostagem/>
+        <TelaDaPostagem imagem={imagem} descricao={descricao} titulo={titulo} />
       </Container>
     </>
   );
